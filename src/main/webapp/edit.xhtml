@@ -1,0 +1,83 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>    
+        <title>Редактирование</title>
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <h2 style="text-align: center" class="col-sm-4">Редактирование</h2>
+            </div>
+            <hr/>
+            <div var="editUser">
+                <div class="form-group">
+                    <h:outputLabel for="name" class="control-label col-sm-4">Имя</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="name" value="#{editUser.name}" class="form-control" validatorMessage="Поле имя обязательное">
+                            <f:validateRequired />
+                        </h:inputText>
+                    </div><font color="red" size="4">*</font>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="surname" class="control-label col-sm-4">Фамилия</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="surname" value="#{editUser.surname}" class="form-control" validatorMessage="Поле фамилия обязательное">
+                            <f:validateRequired />
+                        </h:inputText>
+                    </div><font color="red" size="4">*</font>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="birthday" class="control-label col-sm-4">Дата рождения (DD.MM.YYYY)</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="birthday" value="#{editUser.birthday}" class="form-control" validatorMessage="Поле дата рождение обязательное">
+                            <f:validateRequired />
+                            <f:convertDateTime type="date" dateStyle="medium" />
+                        </h:inputText>
+                    </div><font color="red" size="4">*</font>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="login" class="control-label col-sm-4">Логин</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="login" disabled="true" value="#{editUser.login}" class="form-control" validatorMessage="Поле логин обязательное">
+                            <f:validateRequired />
+                        </h:inputText>
+                    </div><font color="red" size="4">*</font>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="password" class="control-label col-sm-4">Пароль</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputSecret id="password" value="#{editUser.password}" class="form-control" validatorMessage="Поле пароль обязательное">
+                            <f:validateRequired/>
+                        </h:inputSecret>
+                    </div><font color="red" size="4">*</font>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="about" class="control-label col-sm-4">О себе</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputTextarea id="about" value="#{editUser.about}" cols="50" rows="5" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="address" class="control-label col-sm-4">Адрес проживания</h:outputLabel>
+                    <div class="col-sm-4">
+                        <h:inputText id="address" value="#{editUser.address}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2">
+                        <h:link outcome="index" value="Вернуться к списку пользователей" class="btn btn-primary" />
+                    </div>
+                    <div class="col-sm-3">
+                        <center><h:commandButton value="Обновить" action="#{userService.updateUser(editUser)}" class="btn btn-success" style="width: 100px;"></h:commandButton></center>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
