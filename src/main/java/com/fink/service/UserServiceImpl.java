@@ -1,6 +1,6 @@
 package com.fink.service;
 
-import com.fink.dao.UserDAO;
+import com.fink.dao.UserRepository;
 import com.fink.model.User;
 import java.util.List;
 
@@ -13,42 +13,43 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDAO userDao;
+    UserRepository userRepository;
 
     @Override
     @Transactional
-    public String persistUser(User user) {
-        return userDao.persistUser(user);
+    public void persistUser(User user) {
+        userRepository.persistUser(user);
     }
 
     @Override
     @Transactional
     public List<User> getUsersList() {
-        return userDao.getUsersList();
+        return userRepository.getUsersList();
+    }
+
+    @Override
+    @Transactional
+    public User getUserByLogin(String login) {
+        return userRepository.getUserByLogin(login);
     }
 
     @Override
     @Transactional
     public void deleteUser(User user) {
-        userDao.deleteUser(user);
+        userRepository.deleteUser(user);
     }
-    
+
     @Override
     @Transactional
     public void deleteUserByLogin(String login) {
-        userDao.deleteUserByLogin(login);
+        User user = userRepository.getUserByLogin(login);
+        userRepository.deleteUser(user);
     }
 
     @Override
     @Transactional
-    public String updateUser(User user) {
-        return userDao.updateUser(user);
+    public void updateUser(User user) {
+        userRepository.updateUser(user);
     }
 
-    @Override
-    @Transactional
-    public String editUser(User user) {
-        return userDao.editUser(user);
-    }
-    
 }

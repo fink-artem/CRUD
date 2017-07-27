@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.validator.FacesValidator;
+import javax.faces.context.FacesContext;
 
 /**
  * Bean for interaction with JSF
@@ -89,6 +89,15 @@ public class UserBean implements Serializable {
         this.address = address;
     }
 
+    public void deleteUser(User user){
+        userService.deleteUser(user);
+    }
+    
+    public String updateUser(User user){
+        userService.updateUser(user);
+        return "index.xhtml?faces-redirect=true";
+    }
+    
     public String persistUser() {
         User user = new User();
         user.setLogin(getLogin());
@@ -98,11 +107,17 @@ public class UserBean implements Serializable {
         user.setBirthday(getBirthday());
         user.setAbout(getAbout());
         user.setAddress(getAddress());
-        return userService.persistUser(user);
+        userService.persistUser(user);
+        return "index.xhtml?faces-redirect=true";
     }
 
     public String editUser(User user) {
-        return userService.editUser(user);
+        User u = userService.getUserByLogin(user.getLogin());
+        if(u == null){
+            return "index.xhtml?faces-redirect=true";
+        }
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("editUser", (User) u);//update context on page of editing user 
+        return "edit.xhtml?faces-redirect=true";
     }
 
 }

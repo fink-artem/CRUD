@@ -5,7 +5,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
-    <display-name>Fink</display-name>
+    <display-name>Crud</display-name>
 
     <!-- For work with Date -->
     <context-param>
