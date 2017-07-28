@@ -52,4 +52,13 @@ public class UserServiceImpl implements UserService {
         userRepository.updateUser(user);
     }
 
+    @Override
+    @Transactional
+    public boolean checkLogin(String login) {
+        if (login == null) {
+            return false;
+        }
+        return userRepository.getUserByLogin(login) != null;
+    }
+
 }

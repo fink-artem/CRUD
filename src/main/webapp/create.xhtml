@@ -19,7 +19,7 @@
             <div class="form-group">
                 <h:outputLabel for="name" class="control-label col-sm-4">Имя</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="name-id" value="#{userBean.name}" class="form-control" validatorMessage="Поле имя обязательное">
+                    <h:inputText id="name" value="#{userBean.name}" class="form-control" validatorMessage="Поле имя обязательное">
                         <f:validateRequired />
                     </h:inputText>
                 </div><font color="red" size="4">*</font>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <h:outputLabel for="surname" class="control-label col-sm-4">Фамилия</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="surname-id" value="#{userBean.surname}" class="form-control" validatorMessage="Поле фамилия обязательное">
+                    <h:inputText id="surname" value="#{userBean.surname}" class="form-control" validatorMessage="Поле фамилия обязательное">
                         <f:validateRequired />
                     </h:inputText>
                 </div><font color="red" size="4">*</font>
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <h:outputLabel for="birthday" class="control-label col-sm-4">Дата рождения (DD.MM.YYYY)</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="birthday-id" value="#{userBean.birthday}" class="form-control" validatorMessage="Поле дата рождения обязательное">
+                    <h:inputText id="birthday" value="#{userBean.birthday}" class="form-control" validatorMessage="Поле дата рождения обязательное">
                         <f:validateRequired />
                         <f:convertDateTime type="date" dateStyle="medium" />
                     </h:inputText>
@@ -44,7 +44,7 @@
             <div class="form-group">
                 <h:outputLabel for="login" class="control-label col-sm-4">Логин</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="login-id" value="#{userBean.login}" class="form-control" validatorMessage="Поле логин обязательное">
+                    <h:inputText id="login" value="#{userBean.login}" class="form-control" validatorMessage="Поле логин обязательное" validator="#{userBean.validateLogin}">
                         <f:validateRequired />
                     </h:inputText>
                 </div><font color="red" size="4">*</font>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <h:outputLabel for="password" class="control-label col-sm-4">Пароль</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputSecret id="password-id" value="#{userBean.password}" class="form-control" validatorMessage="Поле пароль обязательное">
+                    <h:inputSecret id="password" value="#{userBean.password}" class="form-control" validatorMessage="Поле пароль обязательное">
                         <f:validateRequired/>
                     </h:inputSecret>
                 </div><font color="red" size="4">*</font>
@@ -60,13 +60,13 @@
             <div class="form-group">
                 <h:outputLabel for="about" class="control-label col-sm-4">О себе</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputTextarea id="about-id" cols="50" rows="5" value="#{userBean.about}" class="form-control" />
+                    <h:inputTextarea id="about" cols="50" rows="5" value="#{userBean.about}" class="form-control" />
                 </div>
             </div>
             <div class="form-group">
                 <h:outputLabel for="address" class="control-label col-sm-4">Адрес проживания</h:outputLabel>
                 <div class="col-sm-4">
-                    <h:inputText id="address-id" value="#{userBean.address}"  class="form-control"/>
+                    <h:inputText id="address" value="#{userBean.address}"  class="form-control"/>
                 </div>
             </div>
             <div class="form-group">

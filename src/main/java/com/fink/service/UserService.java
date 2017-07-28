@@ -17,4 +17,6 @@ public interface UserService {
 
     public void updateUser(User user);
     
+    public boolean checkLogin(String login);
+    
 }
